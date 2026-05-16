@@ -34,3 +34,5 @@ jobs:
           git add dados_fotovoltaico.csv
           git diff --cached --quiet || git commit -m "chore: atualiza CSV INMETRO $(date +'%Y-%m-%d')"
           git push
+      - name: Baixa o CSV
+        run: python sync.py 2>&1

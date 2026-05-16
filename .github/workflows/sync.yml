@@ -2,8 +2,11 @@ name: Sync INMETRO CSV
 
 on:
   schedule:
-    - cron: "0 9 * * *"  # todo dia às 06h horário de Brasília (UTC-3)
-  workflow_dispatch:       # permite rodar manualmente também
+    - cron: "0 9 * * *"
+  workflow_dispatch:
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true  # ← elimina o aviso
 
 jobs:
   sync:
@@ -11,10 +14,10 @@ jobs:
 
     steps:
       - name: Checkout do repositório
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.2.2  # ← versão mais recente
 
       - name: Instala Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v5.6.0  # ← versão mais recente
         with:
           python-version: "3.11"
 
